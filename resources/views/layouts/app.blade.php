@@ -1,12 +1,13 @@
-<x-base-layout>
-    @include('layouts.partials.header')
+@props(['title' => '', 'footerLinks' => ''])
+
+<x-base-layout :$title>
+    <x-layouts.header />
 
     {{ $slot }}
 
     <footer>
-        @section('footerLinks')
-            <a href="#">link 1</a>
-            <a href="#">link 2</a>
-        @show
+        <a href="#">link 1</a>
+        <a href="#">link 2</a>
+        {{ $footerLinks }}
     </footer>
 </x-base-layout>

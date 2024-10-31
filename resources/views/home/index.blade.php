@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Home">
     @php
         $color = 'red';
         $bgColor = 'blue';
@@ -472,9 +472,9 @@
         <!--/ New Cars -->
     </main>
 
-    @section('footerLinks')
-      @parent
+    <x-slot:footerLinks>
       <a href="#">link 3</a>
       <a href="#">link 4</a>
-    @endsection
+    </x-slot:footerLinks>
+    
 </x-app-layout>
