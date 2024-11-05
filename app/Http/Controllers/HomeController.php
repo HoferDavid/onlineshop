@@ -17,37 +17,12 @@ class HomeController extends Controller
     public function index()
     {
 
-        // User::factory()
-        //     ->afterCreating(function (User $user) {
-        //         dump($user);
-        //     })
-        //     ->create();
-
-
-        // $maker = Maker::factory()->create();
-
-
-        // Model::factory()
-        //     ->count(5)
-        //     ->for($maker)
-        //     ->create();
-
-
-
-        // Check why it doesnt work
-
-        // User::factory()
-        //     ->has(Car::factory()->count(5), 'favouriteCars')
-        //     ->create();
-
-
         $cars = Car::where('published_at', '<', now())
+            ->with(['primaryImage', 'city', 'carType', 'fuelType', 'maker', 'model'])        
             ->orderBy('published_at', 'desc')
             ->limit(30)
             ->get();
         
-
-
 
         return view('home.index', ['cars' => $cars]);
     }
