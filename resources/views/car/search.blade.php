@@ -25,7 +25,7 @@
                 <div class="search-car-results-wrapper">
                     <div class="search-cars-sidebar">
                         <div class="card card-found-cars">
-                            <p class="m-0">Found <strong>4,568</strong> cars</p>
+                            <p class="m-0">Found <strong>{{ $carCount }}</strong> cars</p>
 
                             <button class="close-filters-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -410,7 +410,7 @@
 
                     <div class="search-cars-results">
                         <div class="car-items-listing">
-                            <div class="car-item card">
+                            {{-- <div class="car-item card">
                                 <a href="#">
                                     <img src="/img/cars/Lexus-RX200t-2016/1.jpeg" alt=""
                                         class="car-item-img rounded-t" />
@@ -799,7 +799,10 @@
                                         <span class="car-item-badge">Electric</span>
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
+                            @foreach ($cars as $car)
+                                <x-car-item :$car />
+                            @endforeach
                         </div>
                         <nav class="pagination my-large">
                             <a href="#" class="pagination-item">
