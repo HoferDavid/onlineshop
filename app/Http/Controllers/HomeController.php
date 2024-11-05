@@ -24,14 +24,31 @@ class HomeController extends Controller
         //     ->create();
 
 
-        $maker = Maker::factory()->create();
+        // $maker = Maker::factory()->create();
 
 
-        Model::factory()
-            ->count(5)
-            ->for($maker)
-            ->create();
+        // Model::factory()
+        //     ->count(5)
+        //     ->for($maker)
+        //     ->create();
 
-        return view('home.index');
+
+
+        // Check why it doesnt work
+
+        // User::factory()
+        //     ->has(Car::factory()->count(5), 'favouriteCars')
+        //     ->create();
+
+
+        $cars = Car::where('published_at', '<', now())
+            ->orderBy('published_at', 'desc')
+            ->limit(30)
+            ->get();
+        
+
+
+
+        return view('home.index', ['cars' => $cars]);
     }
 }
